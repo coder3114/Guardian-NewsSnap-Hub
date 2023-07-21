@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Axios from "axios";
+import data from "../mockNewsData.json";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const GetNewsMock = () => {
+    return data.mockApiResponse.response.results.map((news, key) => {
+      return (
+        <>
+          <img src={news.fields.thumbnail} />
+          <h1 key={key}> {news.webTitle} </h1>
+        </>
+      );
+    });
+  };
+
+  const GetNews = () => {
+    Axios.get(
+      "https://content.guardianapis.com/search?order-by=newest&show-fields=byline%2Cthumbnail%2Cheadline%2CbodyText&api-key=cfbd00ae-c12a-49b7-b4c8-be4f1e29b55d"
+    ).then((res) => {
+      return res.data.response.results.map((news, key) => {
+        return (
+          <>
+            <img src={news.fields.thumbnail} />
+            <h1 key={key}> {news.webTitle} </h1>
+          </>
+        );
+      });
+    });
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <GetNewsMock />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
