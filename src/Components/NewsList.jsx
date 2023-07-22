@@ -1,11 +1,21 @@
 import PropTypes from "prop-types";
+// import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const NewsList = ({ news }) => {
-  return news?.map((news, key) => {
+  // const navigate = useNavigate();
+
+  // const navigateToNewsDetails = () => {
+  //   navigate(`/news-summary/${news?.id}`);
+  // };
+
+  return news?.map((news, index) => {
     return (
-      <div key={key}>
+      <div key={news.id}>
         <img src={news.fields.thumbnail} />
-        <h1> {news.webTitle} </h1>
+        <Link to={"/news-summary/" + index}>
+          <h1> {news.webTitle} </h1>
+        </Link>
       </div>
     );
   });

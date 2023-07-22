@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { getNews } from "../utils/newsDataService";
 import { NewsList } from "./Components/NewsList";
+import { NewsSummary } from "./Components/NewsSummary";
 import "./App.css";
 
 function App() {
@@ -23,7 +25,15 @@ function App() {
 
   return (
     <>
-      <NewsList news={news} />
+      <Router>
+        <Routes>
+          <Route path="/" element={<NewsList news={news} />} />
+          <Route
+            path="/news-summary/:id"
+            element={<NewsSummary news={news} />}
+          />
+        </Routes>
+      </Router>
     </>
   );
 }
