@@ -22,4 +22,14 @@ describe(`getNews tests - GEt request tests to /response`, () => {
     // Assert
     expect(result).toEqual(testData.results);
   });
+
+  it("should have unsuccessful request returning the error object", async () => {
+    // Arrange
+    const error = { message: `Error` };
+    axios.get.mockRejectedValueOnce(error);
+    // Act
+    const result = await getNews();
+    // Assert
+    expect(result).toBe(error);
+  });
 });
