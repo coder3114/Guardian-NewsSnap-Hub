@@ -12,12 +12,13 @@
 h1 {
   font-size: 2.5em;
   line-height: 1.1;
-  padding-bottom: 40px;
+  padding-bottom: 10px;
   width: 1000px;
 }
 
 img {
   width: 1000px;
+  padding-top: 30px;
 }
 
 div {
@@ -25,6 +26,10 @@ div {
   flex-direction: column;
   justify-content: center;
   text-align: left;
+}
+
+p {
+  width: 1000px;
 }
 
 @media (prefers-color-scheme: light) {
