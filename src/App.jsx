@@ -1,37 +1,29 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import { getNews } from "../utils/newsDataService";
+import { NewsList } from "./Components/NewsList";
 import "./App.css";
-import Axios from "axios";
-import data from "../mockNewsData.json";
 
 function App() {
-  const GetNewsMock = () => {
-    return data.mockApiResponse.response.results.map((news, key) => {
-      return (
-        <>
-          <img src={news.fields.thumbnail} />
-          <h1 key={key}> {news.webTitle} </h1>
-        </>
-      );
-    });
+  const [news, setNews] = useState([]);
+
+  const getData = async () => {
+    const data = await getNews();
+    console.log(data);
+    if (data instanceof Error) {
+      setNews([]);
+    } else {
+      setNews(data);
+    }
   };
 
-  const GetNews = () => {
-    Axios.get(
-      "https://content.guardianapis.com/search?order-by=newest&show-fields=byline%2Cthumbnail%2Cheadline%2CbodyText&api-key=cfbd00ae-c12a-49b7-b4c8-be4f1e29b55d"
-    ).then((res) => {
-      return res.data.response.results.map((news, key) => {
-        return (
-          <>
-            <img src={news.fields.thumbnail} />
-            <h1 key={key}> {news.webTitle} </h1>
-          </>
-        );
-      });
-    });
-  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
-      <GetNewsMock />
+      <NewsList news={news} />
     </>
   );
 }
