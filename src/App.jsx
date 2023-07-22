@@ -29,7 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<NewsList news={news} />} />
           <Route
-            path="/news-summary/:id"
+            path="/news-summary/:newsTitle"
             element={<NewsSummary news={news} />}
           />
         </Routes>
