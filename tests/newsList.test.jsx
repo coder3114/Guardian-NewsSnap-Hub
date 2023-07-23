@@ -30,4 +30,21 @@ describe("NewsList tests", () => {
     // Assert
     expect(newsTitle).toBeInTheDocument();
   });
+
+  it("3 - should show the picture of the news", () => {
+    // Arrange
+    render(
+      <MemoryRouter>
+        <NewsList news={testData.response.results} />
+      </MemoryRouter>
+    );
+    const newsPic = screen.getByAltText(
+      testData.response.results[0].fields.headline
+    );
+    // Act
+    // Assert
+    expect(newsPic.src).toContain(
+      testData.response.results[0].fields.thumbnail
+    );
+  });
 });
