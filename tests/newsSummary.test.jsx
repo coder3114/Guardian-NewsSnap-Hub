@@ -85,4 +85,33 @@ describe("NewsSummary tests", () => {
       screen.queryByText(testData.response.results[2].fields.headline)
     ).not.toBeInTheDocument();
   });
+
+  it("4 - should navigate to the original news page in Guardian website", async () => {
+    const routes = [
+      {
+        path: "/news-summary/:newsTitle",
+        element: <NewsSummary news={testData.response.results} />,
+      },
+      {
+        path: "/",
+        element: <NewsList news={testData.response.results} />,
+      },
+    ];
+
+    const router = createMemoryRouter(routes, {
+      initialEntries: [
+        `/news-summary/${testData.response.results[0].id.split("/")[5]}`,
+      ],
+      initialIndex: 0,
+    });
+
+    render(<RouterProvider router={router} />);
+
+    const links = screen.getAllByRole(`link`);
+
+    expect(links[0]).toHaveAttribute(
+      "href",
+      testData.response.results[0].webUrl
+    );
+  });
 });
