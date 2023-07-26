@@ -55,4 +55,34 @@ describe("NewsSummary tests", () => {
       ).toBeInTheDocument();
     }
   });
+
+  it("3 - should not show the headline for the news not clicked", async () => {
+    const routes = [
+      {
+        path: "/news-summary/:newsTitle",
+        element: <NewsSummary news={testData.response.results} />,
+      },
+      {
+        path: "/",
+        element: <NewsList news={testData.response.results} />,
+      },
+    ];
+
+    const router = createMemoryRouter(routes, {
+      initialEntries: [`/`],
+      initialIndex: 0,
+    });
+
+    render(<RouterProvider router={router} />);
+
+    const headlineLink = screen.queryByText(
+      testData.response.results[0].fields.headline
+    );
+
+    await userEvent.click(headlineLink);
+
+    expect(
+      screen.queryByText(testData.response.results[2].fields.headline)
+    ).not.toBeInTheDocument();
+  });
 });
