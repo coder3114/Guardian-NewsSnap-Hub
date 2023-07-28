@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { getNews } from "../utils/newsDataService";
 import { NewsList } from "./Components/NewsList";
 import { NewsSummary } from "./Components/NewsSummary";
@@ -25,15 +25,13 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<NewsList news={news} />} />
-          <Route
-            path="/news-summary/:newsTitle"
-            element={<NewsSummary news={news} />}
-          />
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/" element={<NewsList news={news} />} />
+        <Route
+          path="/news-summary/:newsTitle"
+          element={<NewsSummary news={news} />}
+        />
+      </Routes>
     </>
   );
 }

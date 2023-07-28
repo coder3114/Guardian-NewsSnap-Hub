@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import { NewsList } from "../src/Components/NewsList";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
@@ -86,7 +86,7 @@ describe("NewsSummary tests", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("4 - should navigate to the original news page in Guardian website", async () => {
+  it("4 - should link to the original news page in Guardian website", async () => {
     const routes = [
       {
         path: "/news-summary/:newsTitle",

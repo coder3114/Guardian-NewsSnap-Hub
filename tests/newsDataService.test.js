@@ -2,10 +2,11 @@ import axios from "axios";
 import { getNews } from "../utils/newsDataService";
 import testData from "./testData.json";
 
+// eslint-disable-next-line no-undef
 vi.mock(`axios`);
 
 describe(`getNews tests - GEt request tests to /response`, () => {
-  it("should should actually make the external data call", async () => {
+  it("1 - should should actually make the external data call", async () => {
     // Arrange
     axios.get.mockResolvedValueOnce({ data: testData });
     // Act
@@ -14,7 +15,7 @@ describe(`getNews tests - GEt request tests to /response`, () => {
     expect(axios.get).toHaveBeenCalledWith(`http://localhost:3000/response`);
   });
 
-  it("should have successful request returning the right data", async () => {
+  it("2 - should have successful request returning the right data", async () => {
     // Arrange
     axios.get.mockResolvedValueOnce({ data: testData });
     // Act
@@ -23,7 +24,7 @@ describe(`getNews tests - GEt request tests to /response`, () => {
     expect(result).toEqual(testData.results);
   });
 
-  it("should have unsuccessful request returning the error object", async () => {
+  it("3 - should have unsuccessful request returning the error object", async () => {
     // Arrange
     const error = { message: `Error` };
     axios.get.mockRejectedValueOnce(error);

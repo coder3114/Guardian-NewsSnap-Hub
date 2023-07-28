@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-export function NewsSummary({ news }) {
+export const NewsSummary = ({ news }) => {
   const { newsTitle } = useParams();
 
   let index = news.findIndex((newsPiece) => newsPiece.id.includes(newsTitle));
@@ -12,15 +12,23 @@ export function NewsSummary({ news }) {
   };
 
   return (
-    <>
-      <img src={news[index]?.fields.thumbnail} />
-      <Link to={news[index]?.webUrl}>
-        <h1 onClick={scrollToTop}>{news[index]?.webTitle}</h1>
+    <div className="container align-items-center">
+      <img className="col-10" src={news[index]?.fields.thumbnail} />
+      <Link
+        className="col-10"
+        style={{ textDecorationLine: "none", color: "black" }}
+        to={news[index]?.webUrl}>
+        <h1
+          className="col-12"
+          style={{ fontSize: "1.5rem" }}
+          onClick={scrollToTop}>
+          {news[index]?.webTitle}
+        </h1>
       </Link>
-      <p>{news[index]?.fields.bodyText}</p>
-    </>
+      <p className="col-10">{news[index]?.fields.bodyText}</p>
+    </div>
   );
-}
+};
 
 NewsSummary.propTypes = {
   news: PropTypes.arrayOf(PropTypes.object),
