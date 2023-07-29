@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getNews } from "../utils/newsDataService";
+import { getNews } from "../src/utils/newsDataService";
 import testData from "./testData.json";
 
 // eslint-disable-next-line no-undef

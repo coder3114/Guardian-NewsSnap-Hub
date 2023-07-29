@@ -23,7 +23,7 @@ export const NewsList = ({ news }) => {
           to={"/news-summary/" + newsTitle}>
           <h1
             className="col-12"
-            style={{ fontSize: "1.5rem" }}
+            style={{ fontSize: "2rem" }}
             onClick={scrollToTop}>
             {news.webTitle}
           </h1>

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { getNews } from "../utils/newsDataService";
+import { getNews } from "./utils/newsDataService";
 import { NewsList } from "./Components/NewsList";
 import { NewsSummary } from "./Components/NewsSummary";
-import "./App.css";
+import "./assets/styles/App.css";
 
 function App() {
   const [news, setNews] = useState([]);

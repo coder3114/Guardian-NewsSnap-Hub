@@ -34,5 +34,12 @@
     "jsdom": "^22.1.0",
     "vite": "^4.4.0",
     "vitest": "^0.33.0"
-  }
+  },
+  "description": "You'll test-drive a single page application in React that send requests to the Guardian API to get Headline and Article data and display them.",
+  "main": "vite.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "author": "",
+  "license": "ISC"
 }

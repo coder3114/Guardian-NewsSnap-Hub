@@ -20,12 +20,14 @@ export const NewsSummary = ({ news }) => {
         to={news[index]?.webUrl}>
         <h1
           className="col-12"
-          style={{ fontSize: "1.5rem" }}
+          style={{ fontSize: "1.8rem" }}
           onClick={scrollToTop}>
           {news[index]?.webTitle}
         </h1>
       </Link>
-      <p className="col-10">{news[index]?.fields.bodyText}</p>
+      <p className="col-10" style={{ fontSize: "1.1rem" }}>
+        {news[index]?.fields.bodyText}
+      </p>
     </div>
   );
 };
