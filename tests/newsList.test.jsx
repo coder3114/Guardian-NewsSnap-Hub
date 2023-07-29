@@ -47,4 +47,20 @@ describe("NewsList tests", () => {
       testData.response.results[0].fields.thumbnail
     );
   });
+
+  it("4 - should link the right url with each news", () => {
+    render(
+      <MemoryRouter>
+        <NewsList news={testData.response.results} />
+      </MemoryRouter>
+    );
+    const links = screen.getAllByRole(`link`);
+
+    for (let i; i < links.length - 1; i++) {
+      const expectedTo = `/news-summary/${testData.response.results[i].id
+        .split("/")
+        .pop()}`;
+      expect(links[i]).toHaveAttribute("href", expectedTo);
+    }
+  });
 });
