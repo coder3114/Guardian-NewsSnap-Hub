@@ -15,7 +15,8 @@ describe("NewsList tests", () => {
     // Act
     // Assert
     const newsRows = screen.getAllByRole(`heading`);
-    expect(newsRows.length).toBe(10);
+    // 10 news headings + 3 greeting headings
+    expect(newsRows.length).toBe(13);
   });
 
   it("2 - should show the headline of the news", () => {

@@ -1,3 +1,7 @@
+h4:first-of-type {
+  padding-top: 45px;
+}
+
 h1 {
   color: black;
   font-size: 2em;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getNews } from "./utils/newsDataService";
-import { NewsList } from "./Components/NewsList";
+import { NewsList } from "./components/NewsList";
 import { NewsSummary } from "./Components/NewsSummary";
 import "./assets/styles/App.css";
 

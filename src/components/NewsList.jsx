@@ -1,36 +1,33 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Greeting } from "./Greeting";
+import { Headline } from "./Headline";
+import { Picture } from "./Picture";
 
 export const NewsList = ({ news }) => {
-  return news.map((news) => {
-    const idParts = news?.id.split("/");
-    const newsTitle = idParts[idParts.length - 1];
+  return (
+    <>
+      <Greeting />
+      {news.map((newsPiece) => {
+        const newsTitle = newsPiece.id.split("/")[4];
 
-    const scrollToTop = () => {
-      window.scrollTo(0, 0);
-    };
+        let pictureProps = {
+          thumbnailUrl: newsPiece.fields.thumbnail,
+          altText: newsPiece.fields.headline,
+        };
+        let headlineProps = {
+          newsPiece: newsPiece,
+          path: "/news-summary/" + newsTitle,
+        };
 
-    return (
-      <div className="container align-items-center" key={news.id}>
-        <img
-          className="col-10"
-          src={news.fields.thumbnail}
-          alt={news.fields.headline}
-        />
-        <Link
-          className="col-10"
-          style={{ textDecorationLine: "none", color: "black" }}
-          to={"/news-summary/" + newsTitle}>
-          <h1
-            className="col-12"
-            style={{ fontSize: "2rem" }}
-            onClick={scrollToTop}>
-            {news.webTitle}
-          </h1>
-        </Link>
-      </div>
-    );
-  });
+        return (
+          <div className="container align-items-center" key={newsPiece.id}>
+            <Picture {...pictureProps} />;
+            <Headline {...headlineProps} />
+          </div>
+        );
+      })}
+    </>
+  );
 };
 
 NewsList.propTypes = {

@@ -1,33 +1,28 @@
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Headline } from "./Headline";
+import { Picture } from "./Picture";
+import { Summary } from "./Summary";
 
 export const NewsSummary = ({ news }) => {
   const { newsTitle } = useParams();
-
   let index = news.findIndex((newsPiece) => newsPiece.id.includes(newsTitle));
+  let newsPiece = news[index];
 
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
+  let headlineProps = {
+    newsPiece: newsPiece,
+    path: newsPiece.webUrl,
+  };
+  let pictureProps = {
+    thumbnailUrl: newsPiece.fields.thumbnail,
+    altText: newsPiece.fields.headline,
   };
 
   return (
     <div className="container align-items-center">
-      <img className="col-10" src={news[index]?.fields.thumbnail} />
-      <Link
-        className="col-10"
-        style={{ textDecorationLine: "none", color: "black" }}
-        to={news[index]?.webUrl}>
-        <h1
-          className="col-12"
-          style={{ fontSize: "1.8rem" }}
-          onClick={scrollToTop}>
-          {news[index]?.webTitle}
-        </h1>
-      </Link>
-      <p className="col-10" style={{ fontSize: "1.1rem" }}>
-        {news[index]?.fields.bodyText}
-      </p>
+      <Picture {...pictureProps} />;
+      <Headline {...headlineProps} />
+      <Summary newsBody={newsPiece.fields.bodyText} />
     </div>
   );
 };
