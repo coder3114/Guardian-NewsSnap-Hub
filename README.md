@@ -83,7 +83,7 @@ This data was used for the whole developing process. To serve the mock data, fir
 
 Run `npm test -- --coverage` on the test folder, and you will be able to see a coverage report like this:
 
-![test-coverage-report](src\assets\images\test-coverage-report.png)
+![test-coverage-report](src/assets/images/test-coverage-report.png) 
 
 ### How to run the App
 
