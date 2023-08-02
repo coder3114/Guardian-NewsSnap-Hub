@@ -21,7 +21,7 @@ There are two different pages, each offering varying levels of detail for the ne
 
 Get a concise overview of the latest news headlines.
 
-<img src="src\assets\images\headline-page.png" alt="headline-page" width="70%">
+<img src="src/assets/images/home-page.png" alt="headline-page" width="70%">
 
 ##### Article summary page
 
@@ -102,7 +102,7 @@ To run the app locally in development mode, follow these steps:
 4.  Runs the app in the development mode.\
      Open the local path from your terminal (e.g. **http://localhost:5174**) to view it in the browser.
 
-    ![npm-run-dev](src\assets\images\npm-run-dev.png)
+    ![npm-run-dev](src/assets/images/npm-run-dev.png)
 
     The page will reload if you make edits.\
     You will also see any lint errors in the console.
