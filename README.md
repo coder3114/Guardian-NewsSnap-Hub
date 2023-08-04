@@ -9,7 +9,7 @@ It allows users to read news at different levels of detail and ensures a respons
 
 The app sends requests to the Guardian API to fetch news data using Axios (for details see src\utils\newsDataService.js and sample data in tests\testData.json).
 
-It uses a specific API endpoint https://content.guardianapis.com/search?order-by=newest&show-fields=byline%2Cthumbnail%2Cheadline%2CbodyText&api-key=cfbd00ae-c12a-49b7-b4c8-be4f1e29b55d to access the news information.
+It uses a specific API endpoint to access the news information.
 
 #### Data Display
 

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getNews } from "./utils/newsDataService";
 import { NewsList } from "./components/NewsList";
-import { NewsSummary } from "./Components/NewsSummary";
+import { NewsSummary } from "./components/NewsSummary";
 import "./assets/styles/App.css";
 
 function App() {
