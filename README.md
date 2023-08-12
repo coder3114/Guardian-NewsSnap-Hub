@@ -1,5 +1,8 @@
 # 📰 **Guardian NewsSnap Hub** 📰
 
+
+#### Update: This App is now deployed on Netlify, click to visit https://guardian-newssnap-hub.netlify.app/
+-------------------------------------
 The app's main purpose is to display news headlines and summaries from the Guardian newspaper API.
 It allows users to read news at different levels of detail and ensures a responsive and user-friendly cross-device experience.
 
